@@ -9,12 +9,19 @@ const Profile = () => {
     platform: 'PW'
   });
 
+  React.useEffect(() => {
+    import('../utils/storage').then(module => {
+      setProfile(module.getProfile());
+    });
+  }, []);
+
   const [isEditing, setIsEditing] = useState(false);
 
-  const handleSave = (e) => {
+  const handleSave = async (e) => {
     e.preventDefault();
     setIsEditing(false);
-    // Real implementation would save to Context/Storage here
+    const module = await import('../utils/storage');
+    module.saveProfile(profile);
   };
 
   return (

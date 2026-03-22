@@ -185,7 +185,12 @@ const RecentLogs = () => {
             </div>
             <div style={{ fontSize: '0.875rem', color: 'var(--text-secondary)' }}>
               DPPs: {log.dpp || 'None'} <br/>
-              Theory Revised: {log.theory ? 'Yes' : 'No'}
+              Theory Revised: {log.theory ? 'Yes 📖' : 'No'} <br/>
+              Practice Sheets: {log.practiceSheets || 0} | PYQs: {log.pyqs || 0} <br/>
+              {log.formulas && <>Formulas Revised: Yes 🧪<br/></>}
+              {log.mistakes && <><span style={{color: 'var(--accent-danger)'}}>Mistakes: {log.mistakes}</span><br/></>}
+              {log.improvement && <><span style={{color: 'var(--accent-neon)'}}>Improvement: {log.improvement}</span><br/></>}
+              {log.notes && <span style={{opacity: 0.7, fontStyle: 'italic'}}>Notes: {log.notes}</span>}
             </div>
           </div>
         ))}

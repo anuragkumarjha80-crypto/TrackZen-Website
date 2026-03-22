@@ -7,6 +7,7 @@ import ClassTracker from './pages/ClassTracker'
 import Profile from './pages/Profile'
 import Analytics from './pages/Analytics'
 import Login from './pages/Login'
+import Footer from './components/Footer'
 
 function App() {
   const [user, setUser] = useState(null);
@@ -25,6 +26,7 @@ function App() {
       </Routes>
       
       <FloatingActionButton onClick={() => console.log('Action')} />
+      <Footer />
       <BottomNav />
     </BrowserRouter>
   )

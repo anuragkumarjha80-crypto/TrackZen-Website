@@ -45,9 +45,9 @@ const Login = ({ onLogin }) => {
 
   return (
     <div className="app-container" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', paddingBottom: 0 }}>
-      <div className="glass" style={{ width: '100%', padding: '2rem', display: 'flex', flexDirection: 'column', gap: '1.5rem', marginTop: '-4rem' }}>
+      <div className="glass" style={{ width: '100%', padding: '2rem', display: 'flex', flexDirection: 'column', gap: '1.5rem', marginTop: '1rem' }}>
         <div style={{ textAlign: 'center' }}>
-          <h1 className="text-gradient" style={{ fontSize: '2.5rem', marginBottom: '0.5rem' }}>TrackZen</h1>
+          <h1 className="text-gradient" style={{ fontSize: '2.5rem', marginBottom: '0.5rem' }}>Strevix</h1>
           <p style={{ color: 'var(--text-secondary)' }}>Log in to continue your journey.</p>
         </div>
 
