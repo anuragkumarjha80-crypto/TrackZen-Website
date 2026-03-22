@@ -121,13 +121,13 @@ const DailyTracker = () => {
 
         <button onClick={async () => {
           const module = await import('../utils/storage');
-          const success = await module.saveDailyLog(formData);
-          if(success) {
+          const result = await module.saveDailyLog(formData);
+          if(result.success) {
             alert('Daily log saved successfully! Start your momentum.');
             // Quick refresh hack for demo
             window.location.reload();
           } else {
-            alert('Failed to save to Supabase. Make sure you have created the daily_logs table in SQL Editor.');
+            alert(`Failed to save to Supabase: ${result.message}\nPlease ensure the daily_logs table exists and your database is active.`);
           }
         }} style={{
           background: 'linear-gradient(135deg, var(--accent-neon), var(--accent-blue))', 
@@ -145,7 +145,6 @@ const DailyTracker = () => {
       </div>
 
       <RecentLogs />
-      <Footer />
     </div>
   );
 };

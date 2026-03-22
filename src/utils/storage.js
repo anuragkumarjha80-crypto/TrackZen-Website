@@ -12,10 +12,10 @@ export const saveDailyLog = async (logData) => {
       user_id: session.user.id,
       theory: logData.theory || false,
       dpp: logData.dpp || null,
-      practiceSheets: logData.practiceSheets ? parseInt(logData.practiceSheets) : null,
-      pyqs: logData.pyqs ? parseInt(logData.pyqs) : null,
+      practiceSheets: logData.practiceSheets ? Number(logData.practiceSheets) : null,
+      pyqs: logData.pyqs ? Number(logData.pyqs) : null,
       formulas: logData.formulas || false,
-      rating: logData.rating ? parseInt(logData.rating) : null,
+      rating: logData.rating ? Number(logData.rating) : null,
       mistakes: logData.mistakes || null,
       improvement: logData.improvement || null,
       notes: logData.notes || null
@@ -25,10 +25,10 @@ export const saveDailyLog = async (logData) => {
     const { error } = await supabase.from('daily_logs').insert([payload]);
     
     if (error) throw error;
-    return true;
+    return { success: true };
   } catch (error) {
     console.error('Failed to save log to Supabase', error);
-    return false;
+    return { success: false, message: error.message || 'Unknown network error' };
   }
 };
 

@@ -3,10 +3,7 @@ import Card from '../components/Card';
 import { BookOpen, Video, CheckCircle, Clock } from 'lucide-react';
 
 const ClassTracker = () => {
-  const [classes, setClasses] = useState([
-    { id: 1, subject: 'Physics', type: 'Live', duration: '2 hours', status: 'Completed' },
-    { id: 2, subject: 'Mathematics', type: 'Recorded', duration: '1.5 hours', status: 'Pending' }
-  ]);
+  const [classes, setClasses] = useState([]);
 
   const [newClass, setNewClass] = useState({
     subject: '',
@@ -78,11 +75,17 @@ const ClassTracker = () => {
             </div>
             <div>
               {cls.status === 'Completed' ? 
-                <CheckCircle size={24} color="var(--accent-neon)" /> : 
-                <button onClick={() => setClasses(classes.map(c => c.id === cls.id ? {...c, status: 'Completed'} : c))} 
-                  style={{ background: 'rgba(255,255,255,0.1)', padding: '0.5rem 1rem', borderRadius: 'var(--border-radius-full)', color: 'white', fontSize: '0.75rem' }}>
-                  Mark Done
-                </button>
+                <div style={{display:'flex', gap:'0.5rem', alignItems:'center'}}>
+                  <CheckCircle size={24} color="var(--accent-neon)" /> 
+                  <button onClick={() => setClasses(classes.filter(c => c.id !== cls.id))} style={{ background: 'transparent', color: 'var(--accent-danger)', padding: 0, border: 'none', cursor: 'pointer' }}>🗑️</button>
+                </div> : 
+                <div style={{display:'flex', gap:'0.5rem', alignItems:'center'}}>
+                  <button onClick={() => setClasses(classes.map(c => c.id === cls.id ? {...c, status: 'Completed'} : c))} 
+                    style={{ background: 'rgba(255,255,255,0.1)', padding: '0.5rem 1rem', borderRadius: 'var(--border-radius-full)', color: 'white', fontSize: '0.75rem', cursor: 'pointer' }}>
+                    Mark Done
+                  </button>
+                  <button onClick={() => setClasses(classes.filter(c => c.id !== cls.id))} style={{ background: 'transparent', color: 'var(--accent-danger)', padding: 0, border: 'none', cursor: 'pointer' }}>🗑️</button>
+                </div>
               }
             </div>
           </div>

@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { supabase } from '../utils/supabase';
-import Footer from '../components/Footer';
 
 const Login = ({ onLogin }) => {
   const [email, setEmail] = useState('');
@@ -114,7 +113,6 @@ const Login = ({ onLogin }) => {
           </div>
         </form>
       </div>
-      <Footer />
     </div>
   );
 };
