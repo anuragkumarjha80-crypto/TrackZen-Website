@@ -145,6 +145,7 @@ const DailyTracker = () => {
       </div>
 
       <RecentLogs />
+      <Footer />
     </div>
   );
 };

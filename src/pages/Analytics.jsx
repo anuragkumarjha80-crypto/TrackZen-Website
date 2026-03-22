@@ -2,6 +2,7 @@ import React from 'react';
 import Card from '../components/Card';
 import { Flame, TrendingUp, Award, Calendar, BarChart as BarChartIcon } from 'lucide-react';
 import { AreaChart, Area, XAxis, Tooltip, ResponsiveContainer } from 'recharts';
+import Footer from '../components/Footer';
 
 const dummyData = [
   { day: 'Mon', hours: 2.5, rating: 3 },
@@ -90,6 +91,7 @@ const Analytics = () => {
         </div>
       </Card>
       
+      <Footer />
     </div>
   );
 };

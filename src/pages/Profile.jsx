@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Card from '../components/Card';
 import { User, Shield, GraduationCap } from 'lucide-react';
+import Footer from '../components/Footer';
 
 const Profile = () => {
   const [profile, setProfile] = useState({
@@ -97,6 +98,7 @@ const Profile = () => {
           </div>
         )}
       </Card>
+      <Footer />
     </div>
   );
 };
