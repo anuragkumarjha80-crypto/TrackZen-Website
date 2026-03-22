@@ -183,6 +183,58 @@ const RecentLogs = () => {
               <span style={{ fontWeight: 600, color: 'var(--accent-neon)' }}>{log.date}</span>
               <span style={{ color: 'var(--accent-gold)' }}>Rating: {log.rating}/5</span>
             </div>
+
+            {/* Mock Test Results Box */}
+            {(log.test_attempted || log.testAttempted) && (
+              <div style={{
+                background: 'linear-gradient(135deg, rgba(99, 102, 241, 0.15), rgba(16, 185, 129, 0.15))',
+                border: '1px solid rgba(99, 102, 241, 0.3)',
+                borderRadius: '12px',
+                padding: '0.875rem',
+                marginBottom: '0.75rem'
+              }}>
+                <div style={{ fontSize: '0.75rem', color: 'var(--text-secondary)', marginBottom: '0.5rem', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.5px' }}>
+                  📝 Mock Test Result
+                </div>
+                {(log.test_name || log.testName) && (
+                  <div style={{ fontSize: '0.9375rem', fontWeight: 600, color: 'white', marginBottom: '0.5rem' }}>
+                    {log.test_name || log.testName}
+                  </div>
+                )}
+                <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
+                  {(log.test_score != null || log.testScore != null) && (
+                    <div style={{
+                      background: 'rgba(255,255,255,0.08)',
+                      borderRadius: '10px',
+                      padding: '0.5rem 1rem',
+                      textAlign: 'center',
+                      flex: 1
+                    }}>
+                      <div style={{ fontSize: '0.6875rem', color: 'var(--text-secondary)', marginBottom: '0.25rem' }}>Score</div>
+                      <div style={{ fontSize: '1.375rem', fontWeight: 700, color: 'var(--accent-blue, #3b82f6)' }}>
+                        {log.test_score ?? log.testScore}
+                      </div>
+                    </div>
+                  )}
+                  {(log.test_accuracy != null || log.testAccuracy != null) && (
+                    <div style={{
+                      background: 'rgba(16, 185, 129, 0.12)',
+                      borderRadius: '10px',
+                      padding: '0.5rem 1rem',
+                      textAlign: 'center',
+                      flex: 1,
+                      border: '1px solid rgba(16, 185, 129, 0.25)'
+                    }}>
+                      <div style={{ fontSize: '0.6875rem', color: 'var(--text-secondary)', marginBottom: '0.25rem' }}>Accuracy</div>
+                      <div style={{ fontSize: '1.5rem', fontWeight: 800, color: 'var(--accent-neon, #10b981)' }}>
+                        {log.test_accuracy ?? log.testAccuracy}%
+                      </div>
+                    </div>
+                  )}
+                </div>
+              </div>
+            )}
+
             <div style={{ fontSize: '0.875rem', color: 'var(--text-secondary)' }}>
               DPPs: {log.dpp || 'None'} <br/>
               Theory Revised: {log.theory ? 'Yes 📖' : 'No'} <br/>

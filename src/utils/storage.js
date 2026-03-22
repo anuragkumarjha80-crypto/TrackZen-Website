@@ -1,6 +1,7 @@
 import { supabase } from './supabase';
 
 const PROFILE_KEY = 'trackzen_profile';
+const CLASSES_KEY = 'trackzen_classes';
 
 export const saveDailyLog = async (logData) => {
   try {
@@ -18,7 +19,12 @@ export const saveDailyLog = async (logData) => {
       rating: logData.rating ? Number(logData.rating) : null,
       mistakes: logData.mistakes || null,
       improvement: logData.improvement || null,
-      notes: logData.notes || null
+      notes: logData.notes || null,
+      // Mock test fields
+      test_attempted: logData.testAttempted || false,
+      test_name: logData.testName || null,
+      test_score: logData.testScore ? Number(logData.testScore) : null,
+      test_accuracy: logData.testAccuracy ? Number(logData.testAccuracy) : null
       // date and created_at are generated automatically
     };
 
@@ -60,5 +66,24 @@ export const getProfile = () => {
     return data ? JSON.parse(data) : { name: 'Student', exam: 'JEE', platform: 'PW' };
   } catch {
     return { name: 'Student', exam: 'JEE', platform: 'PW' };
+  }
+};
+
+// --- Class Persistence (localStorage with date tracking) ---
+
+export const saveClasses = (classes) => {
+  try {
+    localStorage.setItem(CLASSES_KEY, JSON.stringify(classes));
+  } catch (e) {
+    console.error('Failed to save classes', e);
+  }
+};
+
+export const getClasses = () => {
+  try {
+    const data = localStorage.getItem(CLASSES_KEY);
+    return data ? JSON.parse(data) : [];
+  } catch {
+    return [];
   }
 };
