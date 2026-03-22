@@ -1,0 +1,68 @@
+.bottom-nav-container {
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: 430px;
+  background: var(--bg-tertiary);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-top: var(--glass-border);
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 1rem 0.5rem;
+  padding-bottom: env(safe-area-inset-bottom, 1rem); /* iPhone notch support */
+  z-index: 100;
+  box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.2);
+}
+
+.bottom-nav-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+  color: var(--text-secondary);
+  text-decoration: none;
+  font-size: 0.75rem;
+  font-weight: 500;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+}
+
+.bottom-nav-item:hover {
+  transform: translateY(-2px);
+}
+
+.bottom-nav-item.active {
+  color: var(--accent-neon);
+}
+
+.bottom-nav-icon {
+  width: 24px;
+  height: 24px;
+  stroke-width: 2px;
+  transition: all 0.3s ease;
+}
+
+.bottom-nav-item.active .bottom-nav-icon {
+  stroke-width: 2.5px;
+  filter: drop-shadow(0 0 8px rgba(16, 185, 129, 0.5));
+}
+
+.active-indicator {
+  position: absolute;
+  bottom: -8px;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background-color: var(--accent-neon);
+  box-shadow: 0 0 8px var(--accent-neon);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.bottom-nav-item.active .active-indicator {
+  opacity: 1;
+}

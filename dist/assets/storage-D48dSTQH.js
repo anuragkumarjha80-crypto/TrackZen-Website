@@ -1,0 +1,1 @@
+var e=`trackzen_logs`,t=t=>{try{let r=n(),i=new Date().toISOString().split(`T`)[0],a=r.findIndex(e=>e.date===i);return a>=0?r[a]={...t,date:i}:r.push({...t,date:i}),localStorage.setItem(e,JSON.stringify(r)),!0}catch(e){return console.error(`Failed to save log`,e),!1}},n=()=>{try{let t=localStorage.getItem(e);return t?JSON.parse(t):[]}catch{return[]}};export{t as saveDailyLog};
